@@ -1,0 +1,24 @@
+name: Deploy backend
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Start SSH agent and add key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY_BACKEND }}
+
+      - name: Deploy to backend server
+        run: |
+          ssh -o StrictHostKeyChecking=no \
+            ${{ secrets.SSH_USER_BACKEND }}@${{ secrets.SSH_HOST_BACKEND }} \
+            "cd /opt/api && ./deploy-backend.sh"
