@@ -17,7 +17,7 @@ DATABASE_URL = "sqlite:///./notes.db"
 # In a real app, keep this secret outside code and use a stronger value
 SECRET_KEY = "change-this-secret-key-in-production"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 61	
+ACCESS_TOKEN_EXPIRE_MINUTES = 60	
 
 # ========== DB SETUP ==========
 
