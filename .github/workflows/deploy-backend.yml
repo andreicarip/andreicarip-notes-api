@@ -37,5 +37,5 @@ jobs:
       - name: Deploy to backend server
         if: success()
         run: |
-          DEST="${{ secrets.SECRET_USERNAME_BACKEND }}@${{ secrets.SSH_HOST_BACKEND }}"
+          DEST="${{ secrets.SECRET_USER_BACKEND }}@${{ secrets.SSH_HOST_BACKEND }}"
           ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes "$DEST" 'cd /opt/api && ./deploy-backend.sh'
